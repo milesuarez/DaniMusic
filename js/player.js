@@ -9,7 +9,7 @@ function Player(game) {
   this.y = this.game.canvas.height * 0.45;
 
   this.img = new Image();
-  this.img.src = 'img/batuta.png';
+  this.img.src = 'img/baton.png';
   
   // número de imágenes diferentes
  // this.img.frames = 3;
@@ -73,7 +73,7 @@ Player.prototype.setListeners = function() {
     //} else if (event.keyCode == this.game.keys.SPACE) {
     //  this.shoot();
     //}
-  }.bind(this);
+  }.bind(this);console.log("por que BIND en las funciones set Intervalo y onKeyCode");
 };
 
 //Player.prototype.shoot = function() {
