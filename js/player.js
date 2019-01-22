@@ -5,7 +5,7 @@ function Player(game) {
   this.x = this.game.canvas.width * 0.1;
 
   // guardar posición original (suelo)
-  this.y0 = this.game.canvas.height * 0.8;
+  // this.y0 = this.game.canvas.height * 0.8;
   this.y = this.game.canvas.height * 0.45;
 
   this.img = new Image();
@@ -16,7 +16,7 @@ function Player(game) {
  // this.img.frameIndex = 0;
 
   // medidas de la imagen a representar en el canvas
-  this.w = 50;
+  this.w = 60;
   this.h = 75;
 
   //this.vy = 1;
@@ -60,11 +60,11 @@ Player.prototype.setListeners = function() {
     
     switch (event.keyCode) {
       case 38:
-        this.y -= 30;
-        break;
+          if (this.y > (30 +this.h/2)) this.y -= 30;
+          break;
       case 40:
-        this.y += 30;
-        break;
+          if (this.y < (this.game.canvas.height - this.h - 15)) this.y += 30;
+          break;
     }
     this.draw();
     //if (event.keyCode === this.game.keys.TOP_KEY && this.y == this.y0) {
@@ -73,7 +73,7 @@ Player.prototype.setListeners = function() {
     //} else if (event.keyCode == this.game.keys.SPACE) {
     //  this.shoot();
     //}
-  }.bind(this);console.log("por que BIND en las funciones set Intervalo y onKeyCode");
+  }.bind(this);
 };
 
 //Player.prototype.shoot = function() {

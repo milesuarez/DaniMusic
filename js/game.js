@@ -38,11 +38,11 @@ var Game = {
 
   // eliminamos obstáculos fuera del canvas
       this.clearObstacles();
-      this.clearSymbols();console.log(symbols);
 
-      // if (this.isCollision()) {
-      //   this.gameOver();
-      // }
+      this.clearSymbols();
+       if (this.isCollision()) {
+         this.gameOver();
+       }
     }.bind(this), 1000 / this.fps);
   },
   stop: function () {
@@ -50,11 +50,12 @@ var Game = {
   },
   //fin del juego
   gameOver: function () {
+
     this.stop();
 
     if (confirm("GAME OVER. Play again?")) {
       this.reset();
-      this.start();
+      this.start("canvas");
     }
   },
   //reseteamos todos los elementos del juego para empezar en un estado limpio
@@ -68,18 +69,19 @@ var Game = {
     this.score = 0;
   },
   //chequea si ha sucedido una colisión
-  //isCollision: function () {
-  //  // colisiones genéricas 
-  //  // (p.x + p.w > o.x && o.x + o.w > p.x && p.y + p.h > o.y && o.y + o.h > p.y )
-  //  // esto chequea que el personaje no estén en colisión con cualquier obstáculo
-  //  return this.obstacles.some(function (obstacle) {
-  //    return (
-  //      ((this.player.x + this.player.w) >= obstacle.x &&
-  //        this.player.x < (obstacle.x + obstacle.w) &&
-  //        this.player.y + (this.player.h - 20) >= obstacle.y)
-  //    );
-  //  }.bind(this));
-  //},
+  isCollision: function () {
+    // colisiones genéricas 
+    // (p.x + p.w > o.x && o.x + o.w > p.x && p.y + p.h > o.y && o.y + o.h > p.y )
+    // esto chequea que el personaje no estén en colisión con cualquier obstáculo
+    return this.obstacles.some(function (obstacle) {
+      return (
+        ((this.player.x + (this.player.w)-3) >= obstacle.x &&
+          this.player.x < (obstacle.x + obstacle.w -5) &&
+          this.player.y + (this.player.h/4) >= obstacle.y) &&
+          obstacle.y + obstacle.h -12 > this.player.y
+      );
+    }.bind(this));
+  },
   //esto elimina los obstáculos del array que estén fuera de la pantalla
   clearObstacles: function () {
     this.obstacles = this.obstacles.filter(function (obstacle) {
@@ -88,7 +90,8 @@ var Game = {
   },
   
   clearSymbols: function () {
-    this.symbols = this.symbols.filter(function (symbol) {
+    
+      this.symbols = this.symbols.filter(function (symbol) {
       return symbol.x >= 0;
     });
   },
