@@ -1,18 +1,22 @@
 //constructor de obstáculos
 function Symbol(game) {
-  this.game = game;//constructor de obstáculos
-
-
+  this.game = game;//constructor de simbolos musicales
+  var maxSymbols = this.game.randomLimit(0,partitura.length); 
+  this.name = partitura[maxSymbols].name;
   this.w = 60;
   this.h = 60;
 
-  this.dx = 65;
+  this.dx = 5;
 
   this.x = 1190; // BUSCAR LOS VALORES EN VARIABLES DE TAMAÑO DE LA PANTALLA
   this.y = 10;
 
   this.img = new Image();
-  this.img.src = 'img/redonda.png';
+  this.img.src = partitura[maxSymbols].image;
+
+  this.imgPent = new Image();
+  this.imgPent.src = "./img/musicSheet.png ";
+
 }
 
 

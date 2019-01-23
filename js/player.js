@@ -3,9 +3,6 @@ function Player(game) {
   this.game = game;
  
   this.x = this.game.canvas.width * 0.1;
-
-  // guardar posición original (suelo)
-  // this.y0 = this.game.canvas.height * 0.8;
   this.y = this.game.canvas.height * 0.45;
 
   this.img = new Image();
@@ -19,10 +16,7 @@ function Player(game) {
   this.w = 60;
   this.h = 75;
 
-  //this.vy = 1;
-
- // this.bullets = [];
-
+  this.score = 0;
   this.setListeners();
 }
 
