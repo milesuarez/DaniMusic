@@ -14,7 +14,7 @@ function Player(game) {
 
   // medidas de la imagen a representar en el canvas
   this.w = 60;
-  this.h = 75;
+  this.h = 70;
 
   this.score = 0;
   this.setListeners();

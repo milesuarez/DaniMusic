@@ -6,6 +6,7 @@ var Game = {
   obstacleFrecuence: 50,
   newSymbol: false,
   score: 0,
+  totalSymbol: 0,
   scoreBoard: undefined,
   
   keys: {
@@ -26,9 +27,8 @@ var Game = {
       if (this.newSymbol || this.symbol.x < 0){
           this.generateSymbol();
           this.newSymbol = false;
-          this.score += 1;
-          console.log(this.score);
-           }
+          this.totalSymbol += 1;
+      }
         
          // nuevoSymbol: false;
          // console.log(this.player.score);
@@ -40,32 +40,41 @@ var Game = {
       this.moveAll();
       this.drawAll();
 
+      if (this.totalSymbol === 3){this.gameOver();}
+
   // eliminamos obstáculos fuera del canvas
       this.clearObstacles();
 
       //this.clearSymbols();
       if (this.isCollision()) {
-      
-        this.generateAnswer(this.player.x,this.player.y,"Right");
-        this.answer.draw();
-        this.newSymbol = true;
         
-        // this.gameOver();
-      }
+          if (this.answer.figure = "Right") {
+              this.answer.draw();
+              this.newSymbol = true;
+          }
+        
+      } 
+      //else { if (this.answer != 'undefined') {console.log(this.answer);this.answer.draw();}}
+            
+
 
       
 
     }.bind(this), 1000 / this.fps);
   },
+
   stop: function () {
     clearInterval(this.interval);
+    
   },
   //fin del juego
+  
   gameOver: function () {
-
     this.stop();
-
-    if (confirm("GAME OVER. Play again?")) {
+    var scoreText = "GAME OVER. " + this.score + " Aciertos de " + this.totalSymbol + " simbolos, Play again?" ;
+    // debugger;
+    this.drawScore();
+    if (confirm(scoreText)) {
       this.reset();
       this.start("canvas");
     }
@@ -76,7 +85,10 @@ var Game = {
     this.background = new Background(this);
     this.player = new Player(this);
     this.generateSymbol(this);
-    
+    this.answer ="undefined"
+    this.scoreBoard = ScoreBoard;
+    this.score = 0;
+    this.totalSymbol = 0;
     //this.framesCounter = 0;
     this.obstacles = [];
     //this.symbols = [];
@@ -103,7 +115,7 @@ var Game = {
   //      return true;
   //      }
   //  return false
-  debugger
+ 
         var i = 0;
         var colision = false;
         while ( i < this.obstacles.length && !colision ) {
@@ -111,8 +123,16 @@ var Game = {
             this.player.x < (this.obstacles[i].x + this.obstacles[i].w -5) &&
             this.player.y + (this.player.h/2) >= this.obstacles[i].y &&
             this.obstacles[i].y + this.obstacles[i].h -12 > this.player.y) {
-                this.obstacles.splice(i,0);
-                colision = true;
+                if (this.obstacles[i].symbolName == this.symbol.name) {
+                    colision = true;
+                    this.obstacles.splice(i,1);
+                    this.generateAnswer(this.player.x,this.player.y,"Right");
+                    this.score += 1;
+                }
+                else {
+                    this.generateAnswer(this.player.x,this.player.y,"Wrong");
+                }
+                
             }
             i++  
         }
@@ -131,7 +151,7 @@ var Game = {
   //esto elimina los obstáculos del array que estén fuera de la pantalla
   clearObstacles: function () {
     this.obstacles = this.obstacles.filter(function (obstacle) {
-      return obstacle.x >= 0;
+      return obstacle.x + obstacle.w >= 0;
     });
   },
   
@@ -167,7 +187,7 @@ var Game = {
     this.obstacles.forEach(function (obstacle) { obstacle.draw(); });
     this.symbol.draw();
     //this.symbols.forEach(function (symbol) { symbol.draw(); });
-    //this.drawScore();
+    this.drawScore();
   },
   //mueve todos los objetos del escenario, el fondo, el jugador y los obstáculos
   moveAll: function () {
@@ -177,10 +197,10 @@ var Game = {
     this.symbol.move();
     // this.symbols.forEach(function (symbol) { symbol.move(); });
   },
-  //pinta el marcador
-  //drawScore: function () {
-  //  this.scoreBoard.update(this.score, this.ctx)
-  //}
+ // pinta el marcador
+  drawScore: function () {
+    this.scoreBoard.update(this.score, this.totalSymbol, this.ctx)
+  },
 
   randomLimit: function (minNum,maxNumb){
   

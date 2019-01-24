@@ -10,7 +10,7 @@ function Answer(game,xColision,yColision,figure) {
 
   this.img = new Image();
   this.img.src = function (figure) {
-                      if (figure == "Right") {
+                      if (figure === "Right") {
                         return "./img/Blue_check.svg";
                       }
                       return "./img/x-mark-green-md.png";

@@ -4,9 +4,9 @@ function Symbol(game) {
   var maxSymbols = this.game.randomLimit(0,partitura.length); 
   this.name = partitura[maxSymbols].name;
   this.w = 60;
-  this.h = 60;
+  this.h = 70;
 
-  this.dx = 5;
+  this.dx = 2;
 
   this.x = 1190; // BUSCAR LOS VALORES EN VARIABLES DE TAMAÑO DE LA PANTALLA
   this.y = 10;
