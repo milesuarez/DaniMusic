@@ -40,7 +40,6 @@ var Game = {
 
       this.moveAll();
       this.drawAll();
-
       if (this.totalSymbol === 10){this.gameOver();}
 
   // eliminamos obstáculos fuera del canvas
@@ -76,8 +75,10 @@ var Game = {
     // debugger;
     this.drawScore();
     if (confirm(scoreText)) {
-      this.reset();
-      this.start("canvas");
+      // this.reset();
+      // this.start("canvas");
+      document.getElementById("options").removeAttribute("class");
+      document.getElementById("canvas").className += "pepe";
     }
   },
 
