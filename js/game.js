@@ -40,7 +40,7 @@ var Game = {
 
       this.moveAll();
       this.drawAll();
-      if (this.totalSymbol === 10){this.gameOver();}
+      if (this.totalSymbol === 5){this.gameOver();}
 
   // eliminamos obstáculos fuera del canvas
       this.clearObstacles();
