@@ -1,5 +1,28 @@
 window.onload = function() {
- // document.getElementById("canvas").disabled = true;
+
+  function disable (selector){
+    document.getElementById(selector).className += "pepe";
+}
+
+function anable (selector){
+  document.getElementById(selector).removeAttribute("class");
+}
+
+
+
+document.getElementById("figuras").onclick = function () { 
+  disable("options")
+  anable("canvas")
+  Game.start("canvas",figuras)
+};
+document.getElementById("notas").onclick = function() { 
+  disable("options")
+  anable("canvas")
+  Game.start("canvas",notas)
+}
+
+
+// SERIA EL CODIGO PARA CARGAR LA PAGINA HTML CON DOM
 //function addTitle(textContent){
 //  
 //  var element = document.querySelector("title")
@@ -48,9 +71,6 @@ window.onload = function() {
 //
 //    document.getElementById("start-button").onclick = function() {
 //        
-
-document.getElementById("figuras").onclick = function () { Game.start("canvas",figuras)};
-document.getElementById("notas").onclick = function() { Game.start("canvas",notas)}
         
 //Game.start("canvas",notas);
 //    }
