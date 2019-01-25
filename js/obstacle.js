@@ -1,20 +1,20 @@
 //constructor de obstáculos
 
-var colorsHexa = ["#ffffff", "#298A08","#B40404"];
+var colorsHexa = ["#0B4C5F", "#298A08","#B40404"];
 
 function Obstacle(game) {
   this.game = game;
   
-  this.w = 90;
-  this.h = 8;
+  this.w = 95;
+  this.h = 9;
   
-  this.dx = this.game.randomLimit(2,5);;
+  this.dx = this.game.randomLimit(2,6);;
   
   this.x = this.game.canvas.width;
   this.y = this.game.randomLimit(100,420);
   
-  var maxSymbols = this.game.randomLimit(0,partitura.length); 
-  this.symbolName = partitura[maxSymbols].name; 
+  var maxSymbols = this.game.randomLimit(0,this.game.partitura.length); 
+  this.symbolName = this.game.partitura[maxSymbols].name; 
 
   this.colorText = colorsHexa[this.game.randomLimit(0,3)]
 }

@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>title</title>
+  <title>Dani Music</title>
 
   <!-- IMPORTANTE EL ORDEN -->
-  <!-- Si un objeto necesita otro, incluirlo antes -->
+  <!-- Si un objeto necesita otro, incluirlo antes 
+  
+  <link rel=”shortcut icon” type=”image/png” href=”img/logo.png”/>-->
+  <script type="text/javascript" src="js/notas.js"></script>
   <script type="text/javascript" src="js/scoreboard.js"></script>
-  <script type="text/javascript" src="js/partitura.js"></script>
+  <script type="text/javascript" src="js/figuras.js"></script>
   <script type="text/javascript" src="js/answer.js"></script>
   <script type="text/javascript" src="js/background.js"></script>   
   <script type="text/javascript" src="js/symbol.js"></script>
@@ -20,6 +23,15 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-  <canvas id="canvas" width="1200" height="500"></canvas>
+  <img src="img/figuras/claveSol.png" width="5%" /> 
+  <h1>Dani Music</h1>
+  <img src="img/baton.png" width="8%" />
+  
+  <img src="img/flechasTecladoUpDawn.jpg" width="3%" />
+  <p>Mueve tu batuta con las flechas del teclado</p>
+  <p>Escoge la lección que quieres practicar</p>
+  <button id="figuras" >Figuras Musicales</button>
+  <button id="notas" >Notas Musicales</button>
+ <canvas id="canvas" width="1200" height="500"></canvas>
 </body>
 </html>

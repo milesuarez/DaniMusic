@@ -13,7 +13,8 @@ var Game = {
     UP : 38,
     DOWN : 40
   },
-  start: function (canvadId) {
+  start: function (canvadId,partitura) {
+    this.partitura = partitura; 
     this.canvas = document.getElementById(canvadId);
     this.ctx = this.canvas.getContext("2d");
     
@@ -40,7 +41,7 @@ var Game = {
       this.moveAll();
       this.drawAll();
 
-      if (this.totalSymbol === 3){this.gameOver();}
+      if (this.totalSymbol === 10){this.gameOver();}
 
   // eliminamos obstáculos fuera del canvas
       this.clearObstacles();
@@ -168,7 +169,7 @@ var Game = {
 
   generateSymbol: function () {
     this.symbol = new Symbol(this); //this.symbols.push(new Symbol(this)); 
-    console.log(this.symbol);
+  
   },
 
   generateAnswer(xColision,yColision,figure) {

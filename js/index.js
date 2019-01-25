@@ -1,10 +1,20 @@
 window.onload = function() {
-  
+ // document.getElementById("canvas").disabled = true;
 //function addTitle(textContent){
 //  
 //  var element = document.querySelector("title")
 //      element.innerHTML = textContent;
+//      element.style.fontFamily = "arial";
+//}
+
+//function addLogo(src){
 //  
+//  var newImage = document.createElement("img");
+//  document.querySelector("body").appendChild(newImage);
+//  
+//  newImage.setAttribute("src",src);
+//  newImage.setAttribute("width","15%");
+//  console.log(newImage);
 //}
 //
 //function addMainTitle(textContent){
@@ -14,32 +24,37 @@ window.onload = function() {
 //  
 //  newTitle.innerHTML = textContent;
 //  newTitle.style.color = "red";
-//  newTitle.style.position = "fixed";
+//  
 //  newTitle.align.textContent = "center";
 // console.log(newTitle);
 //}
+//
 //function addButton(){
 //  
 //  var newButton = document.createElement("button");
+//  newButton.type = "button"
 //  document.querySelector("body").appendChild(newButton);
 //  newButton.setAttribute("name", "StartGame");
-//  newButton.setAttribute("font-size", "20px");
-//  newButton.setAttribute("border-radius", "5px");
-//  newButton.setAttribute("background-color", "blue");
-//  
-//  
-//  console.log (newButton);
-// 
-// // newButtom.setAttribute("value", "Comenzar");
-//  
+//  newButton.setAttribute("id", "start-button");
+//    console.log (newButton);
 //}
 ////buttom.onclick = function(){
-//  //  Game.start("canvas");
-//  //}
+////  Game.start("canvas");
+////}
+//    addTitle("DaniMusic");
+//    addLogo("img/logo.jpg");
+//    addMainTitle ("DaniMusic");
+//    addButton();
 //
-//  addTitle("DaniMusic");
-//  addMainTitle ("DaniMusic");
-//  addButton();
-//  
-  Game.start("canvas");
-};
+//    document.getElementById("start-button").onclick = function() {
+//        
+
+document.getElementById("figuras").onclick = function () { Game.start("canvas",figuras)};
+document.getElementById("notas").onclick = function() { Game.start("canvas",notas)}
+        
+//Game.start("canvas",notas);
+//    }
+
+
+
+}
